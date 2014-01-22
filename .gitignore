@@ -1,0 +1,5 @@
+bin/pkd
+dl/libssh
+dl/putty
+obj/*.o
+tests-out/*
