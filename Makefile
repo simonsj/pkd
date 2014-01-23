@@ -25,7 +25,7 @@ obj/pkd.o: src/pkd.c dl/libssh/README
 #
 
 # branch simonsj/v0-6-plus by default
-LIBSSH_TEST_SHA ?= 6e619a7c8ec808fbe38f7324168081fd10596fa6
+LIBSSH_TEST_SHA ?= fcc47dce9de29b62878286df845d5b1619fb3715
 
 CMAKEFLAGS = \
   -DWITH_GSSAPI=OFF -DWITH_SFTP=OFF -DWITH_STATIC_LIB=ON \
@@ -36,7 +36,8 @@ dl/libssh/README:
 	git clone http://github.com/simonsj/libssh.git dl/libssh
 
 dl/libssh/build/src/libssh.a: dl/libssh/README Makefile
-	@cd dl/libssh; \
+	@set -e; \
+	cd dl/libssh; \
 	if [ `git rev-parse HEAD` != "$(LIBSSH_TEST_SHA)" ]; then \
 		git fetch origin; \
 		git reset --hard $(LIBSSH_TEST_SHA); \
