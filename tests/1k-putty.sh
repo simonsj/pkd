@@ -22,7 +22,7 @@ for n in $(seq 1000); do
   putty/plink $ID $OPTS $HOST -P $PORT "ls" &> $OUT
   if [ $? -ne 0 ]; then
     cat $OUT
-    mv $OUT tests-out/
+    mv $OUT tests-out
     echo "FAILED (run $n)" && exit 1
   fi
   rm $OUT
