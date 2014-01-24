@@ -11,6 +11,7 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
+SSH="ssh"
 ID="-i $1"
 HOST="localhost"
 PORT="1234"
@@ -19,7 +20,7 @@ OPTS="-vvv -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 OUT="/tmp/1k-openssh-out"
 
 for n in $(seq 1000); do
-  ssh -vvv $ID $OPTS $HOST -p $PORT "ls" &> $OUT
+  $SSH -vvv $ID $OPTS $HOST -p $PORT "ls" &> $OUT
   if [ $? -ne 0 ]; then
     cat  $OUT
     mv $OUT tests-out
