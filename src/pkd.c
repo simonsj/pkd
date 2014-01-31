@@ -244,16 +244,7 @@ static int exec_hello(int fd,
         goto out;
     }
 
-    /* set given fd */
-    ssh_bind_set_fd(b, fd);
-
-    /* ssh_bind_listen loads host key as side-effect */
-    rc = ssh_bind_listen(b);
-    if (rc != SSH_OK) {
-        fprintf(stderr, "ssh_bind_listen: %s\n", ssh_get_error(b));
-        goto out;
-    }
-
+    /* ssh_bind_accept loads host key as side-effect */
     rc = ssh_bind_accept_fd(b, s, fd);
     if (rc != SSH_OK) {
         fprintf(stderr, "ssh_bind_accept_fd: %s\n", ssh_get_error(b));
