@@ -19,6 +19,9 @@ OPTS="-vvv -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 
 OUT="/tmp/1k-openssh-out"
 
+unset SSH_AUTH_SOCK
+chmod go-rw ./keys/*
+
 for n in $(seq 1000); do
   $SSH -vvv $ID $OPTS $HOST -p $PORT "ls" &> $OUT
   if [ $? -ne 0 ]; then

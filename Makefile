@@ -16,7 +16,7 @@ LIBS = dl/libssh/build/src/libssh.a \
 bin/pkd: obj/pkd.o dl/libssh/build/src/libssh.a
 	$(CC) $< $(LDFLAGS) $(LIBS) -o $@
 
-obj/pkd.o: src/pkd.c dl/libssh/README
+obj/pkd.o: src/pkd.c dl/libssh/README dl/libssh/build/src/libssh.a
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 
@@ -25,7 +25,7 @@ obj/pkd.o: src/pkd.c dl/libssh/README
 #
 
 # branch simonsj/v0-6-plus by default
-LIBSSH_TEST_SHA ?= 6dacf1db86a80a565ccd05db0d6e6957792ce63b
+LIBSSH_TEST_SHA ?= 1298e8751fd930f9fd551218817068427cb1c3f3
 
 CMAKEFLAGS = \
   -DWITH_GSSAPI=OFF -DWITH_SFTP=OFF -DWITH_STATIC_LIB=ON \

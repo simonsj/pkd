@@ -16,7 +16,7 @@
 
 static void usage()
 {
-    printf("Usage: pkd [ssh-rsa|ssh-dss] <path-to-hostkey>\n");
+    printf("Usage: pkd [ssh-rsa|ssh-dss|ecdsa] <path-to-hostkey>\n");
 }
 
 static int init_libssh()
@@ -219,6 +219,8 @@ static int exec_hello(int fd,
         opts = SSH_BIND_OPTIONS_RSAKEY;
     } else if (strcmp("ssh-dss", hostkeyalgo) == 0) {
         opts = SSH_BIND_OPTIONS_DSAKEY;
+    } else if (strcmp("ecdsa", hostkeyalgo) == 0) {
+        opts = SSH_BIND_OPTIONS_ECDSAKEY;
     } else {
         fprintf(stderr, "unknown algorithm: %s\n", hostkeyalgo);
         rc = -1;

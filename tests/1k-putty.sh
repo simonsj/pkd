@@ -19,6 +19,9 @@ OPTS="-noagent -v"
 
 OUT="/tmp/1k-putty-out"
 
+unset SSH_AUTH_SOCK
+chmod go-rw ./keys/*
+
 #
 # putty doesn't provide the equivalent of OpenSSH's -o StrictHostKeyChecking=no.
 #
