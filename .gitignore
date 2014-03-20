@@ -1,4 +1,5 @@
 bin/pkd
+dl/dropbear
 dl/libssh
 dl/putty
 obj/*.o

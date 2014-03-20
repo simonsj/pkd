@@ -52,15 +52,38 @@ dl/libssh/build/src/libssh.a: dl/libssh/README Makefile
 # putty
 #
 
+PUTTY_TEST_SHA ?= 357f09924e87cf646f9b7caca9afe1cda3202e2a
+
 dl/putty/README:
 	git clone http://github.com/simonsj/putty.git dl/putty
 
 # builds both putty/plink and putty/puttygen
 dl/putty/plink: dl/putty/README Makefile
-	@cd dl/putty; \
+	@set -e; \
+	cd dl/putty; \
 	if [ `git rev-parse HEAD` != "$(PUTTY_TEST_SHA)" ]; then \
 		git fetch origin; \
 		git reset --hard $(PUTTY_TEST_SHA); \
 	fi; \
 	./mkfiles.pl && ./mkauto.sh && ./configure && \
 	make VERBOSE=1 CFLAGS="-Wno-sign-compare" -j8 puttygen plink && cd -
+
+
+#
+# dropbear
+#
+
+DROPBEAR_TEST_SHA ?= 162fcab34736d18074158926bf937962ff5e2f7d
+
+dl/dropbear/README:
+	git clone http://github.com/mkj/dropbear.git dl/dropbear
+
+dl/dropbear/dbclient: dl/dropbear/README
+	@set -e; \
+	cd dl/dropbear; \
+	if [ `git rev-parse HEAD` != "$(DROPBEAR_TEST_SHA)" ]; then \
+		git fetch origin; \
+		git reset --hard $(DROPBEAR_TEST_SHA); \
+	fi; \
+	autoconf && autoheader && ./configure && \
+	make -j8 dbclient && cd -

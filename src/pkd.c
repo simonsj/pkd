@@ -325,21 +325,11 @@ static int exec_hello(int fd,
         goto out;
     }
 
-    while (!ssh_channel_is_eof(c) && (eof_received == 0)) {
+    while ((!ssh_channel_is_eof(c) && (eof_received == 0)) &&
+           (!ssh_channel_is_closed(c) && (close_received == 0))) {
         rc = ssh_event_dopoll(e, 1000 /* milliseconds */);
         if (rc == SSH_ERROR) {
-            fprintf(stderr, "ssh_event_dopoll for remote eof: %s\n",
-                            ssh_get_error(s));
-            break;
-        } else {
-            rc = 0;
-        }
-    }
-
-    while (!ssh_channel_is_closed(c) && (close_received == 0)) {
-        rc = ssh_event_dopoll(e, 1000 /* milliseconds */);
-        if (rc == SSH_ERROR) {
-            fprintf(stderr, "ssh_event_dopoll for remote eof: %s\n",
+            fprintf(stderr, "ssh_event_dopoll for remote eof + close: %s\n",
                             ssh_get_error(s));
             break;
         } else {
