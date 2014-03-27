@@ -25,7 +25,7 @@ obj/pkd.o: src/pkd.c dl/libssh/README dl/libssh/build/src/libssh.a
 #
 
 # branch simonsj/v0-6-plus by default
-LIBSSH_TEST_SHA ?= 1298e8751fd930f9fd551218817068427cb1c3f3
+LIBSSH_TEST_SHA ?= 9c86571e1eab42c9a556c675700448169c6be217
 
 CMAKEFLAGS = \
   -DWITH_GSSAPI=OFF -DWITH_SFTP=OFF -DWITH_STATIC_LIB=ON \
