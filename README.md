@@ -17,5 +17,5 @@ Running PuTTY tests (uses locally-built PuTTY `plink`):
 
 Running Dropbear tests (uses locally-built dropbear `dbclient`):
 * `make dl/dropbear/dbclient` to clone and build dbclient from source
-* start pkd as usual: './bin/pkd ssh-rsa ./keys/openssh-rsa`
-* in another terminal, run tests: `./tests/
+* start pkd as usual: `./bin/pkd ssh-rsa ./keys/openssh-rsa`
+* in another terminal, run tests: `./tests/1k-dropbear.sh ./keys/db-rsa`
