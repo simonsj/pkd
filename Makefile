@@ -88,4 +88,6 @@ dl/dropbear/dbclient: dl/dropbear/README
 		git reset --hard $(DROPBEAR_TEST_SHA); \
 	fi; \
 	autoconf && autoheader && ./configure && \
+	sed -i -e 's?/\*#define DROPBEAR_SHA2_256_HMAC\*/?#define DROPBEAR_SHA2_256_HMAC?' ./options.h && \
+	sed -i -e 's?/\*#define DROPBEAR_SHA2_512_HMAC\*/?#define DROPBEAR_SHA2_512_HMAC?' ./options.h && \
 	make -j8 dbclient && cd -
