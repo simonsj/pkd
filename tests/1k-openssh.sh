@@ -11,11 +11,12 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
-SSH="ssh"
+SSH="ssh" # needs to support curve25519-sha256@libssh.org KexAlgo
 ID="-i $1"
 HOST="localhost"
 PORT="1234"
-OPTS="-vvv -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+#OPTS="-vvv -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o KexAlgorithms=diffie-hellman-group14-sha1"
+OPTS="-vvv -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o KexAlgorithms=curve25519-sha256@libssh.org"
 
 OUT="/tmp/1k-openssh-out"
 
