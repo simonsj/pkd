@@ -265,6 +265,15 @@ static int exec_hello(int fd,
         goto out;
     }
 
+    rc = ssh_options_set(s, SSH_OPTIONS_KEY_EXCHANGE,
+                            "ecdh-sha2-nistp256,"
+                            "diffie-hellman-group14-sha1,"
+                            "diffie-hellman-group1-sha1");
+    if (rc != 0) {
+        fprintf(stderr, "ssh_options_set: %s\n", ssh_get_error(s));
+        goto out;
+    }
+
     /* first do key exchange */
     rc = ssh_handle_key_exchange(s);
     if (rc != SSH_OK) {
