@@ -25,12 +25,12 @@ obj/pkd.o: src/pkd.c dl/libssh/README dl/libssh/build/src/libssh.a
 #
 
 # trying simonsj/master which tracks origin/master
-LIBSSH_TEST_SHA ?= b3e6d5df5353718720642f92ad3bde2e904fded6
+LIBSSH_TEST_SHA ?= ad1313c2e5cf273aec7bf5415876d389ea8d8ae7
 
 CMAKEFLAGS = \
   -DWITH_GSSAPI=OFF -DWITH_SFTP=OFF -DWITH_STATIC_LIB=ON \
   -DWITH_PCAP=OFF -DWITH_DEBUG_CALLTRACE=OFF -DWITH_EXAMPLES=OFF \
-  -DWITH_TESTING=ON \
+  -DWITH_TESTING=ON -DWITH_DEBUG_CRYPTO=ON \
   -DCMAKE_BUILD_TYPE=Debug
 
 dl/libssh/README:
