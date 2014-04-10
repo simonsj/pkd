@@ -24,8 +24,8 @@ obj/pkd.o: src/pkd.c dl/libssh/README dl/libssh/build/src/libssh.a
 # libssh
 #
 
-# trying simonsj/master which tracks origin/master
-LIBSSH_TEST_SHA ?= ad1313c2e5cf273aec7bf5415876d389ea8d8ae7
+# simonsj/patch/master-fix-curve22519-k-value
+LIBSSH_TEST_SHA ?= 9e1a53ad02528e1bad77660c67af95a7b814e0c2
 
 CMAKEFLAGS = \
   -DWITH_GSSAPI=OFF -DWITH_SFTP=OFF -DWITH_STATIC_LIB=ON \
