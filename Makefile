@@ -28,7 +28,10 @@ obj/pkd.o: src/pkd.c dl/libssh/README dl/libssh/build/src/libssh.a
 # LIBSSH_TEST_SHA ?= 9e1a53ad02528e1bad77660c67af95a7b814e0c2
 
 # simonsj/patch/v0-6-fix-curve22519-k-value
-LIBSSH_TEST_SHA ?= 4cbfe12f8d3059698dd2ef91d61ac24e65c40277
+# LIBSSH_TEST_SHA ?= 4cbfe12f8d3059698dd2ef91d61ac24e65c40277
+
+# simonsj/v0-6-plus
+LIBSSH_TEST_SHA ?= 770f5fc214f13dfc030431358f36331882a1bd9a
 
 CMAKEFLAGS = \
   -DWITH_GSSAPI=OFF -DWITH_SFTP=OFF -DWITH_STATIC_LIB=ON \
